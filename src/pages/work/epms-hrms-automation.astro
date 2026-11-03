@@ -1,0 +1,57 @@
+---
+import CaseStudy from '../../layouts/CaseStudy.astro';
+---
+
+<CaseStudy
+  number="01"
+  title="Building ePMS & HRMS automation from zero"
+  subtitle="Two ERP modules tested by hand became a suite that walked an employee's full review journey in 20 minutes, on every environment."
+  description="Case study: a Python + Playwright + pytest framework for BRAC's ePMS and HRMS modules that cut regression from 2 hours to 20 minutes."
+  facts={[
+    { label: 'Role', value: 'Senior SQA Engineer · framework owner' },
+    { label: 'Timeline', value: 'Apr – Oct 2026 · v1 in one month' },
+    { label: 'Stack', value: 'Python · Playwright · pytest · Allure · GitLab' },
+    { label: 'Scope', value: 'ePMS: Objective Setting → 360° feedback · HRMS basic flow' },
+  ]}
+  approach={[
+    { lead: 'Designed the framework from scratch', text: "in Python with Playwright and pytest, structured around one employee's journey rather than around pages. The first version ran within a month; I kept refining it after." },
+    { lead: 'Made environment a configuration choice,', text: 'so the same suite runs on dev, staging and a dedicated test environment.' },
+    { lead: 'Handled variable form data dynamically', text: 'instead of hard-coding it, which removed the main source of false failures.' },
+    { lead: 'Scripted test-data preparation', text: 'for HRMS Job Separation and Employee Transfer, so every run started from employees in the right state.' },
+    { lead: 'Added Allure reporting and versioned everything in GitLab,', text: "so results are readable by people who don't write tests." },
+  ]}
+  results={[
+    "One employee's full ePMS journey automated end to end, from Objective Setting to the 360° feedback review, plus the HRMS basic flow.",
+    'One suite, three environments: dev, staging and test.',
+    'Regression cut from about <strong>2 hours</strong> by hand to <strong>20 minutes</strong>.',
+    'Job Separation and Employee Transfer data prep cut from <strong>1 hour</strong> to <strong>10–12 minutes</strong>.',
+  ]}
+  next={{ href: '/work/java-modernization/', kicker: 'Next · Case study 02', title: 'Modernizing a legacy Java UI suite →' }}
+>
+  <Fragment slot="context">
+    <p>ePMS (performance management) and HRMS are modules of the same enterprise ERP. In ePMS, an employee's review moved from Objective Setting all the way to a 360° feedback review, with its own forms, approvals and rules at every stage. In HRMS, flows like Job Separation and Employee Transfer only worked on employees in a specific state.</p>
+    <p>Regression was manual: about two hours per run, repeated across environments.</p>
+  </Fragment>
+
+  <Fragment slot="problem">
+    <p>Three things made automation hard: form data that changed from run to run, behaviour that differed between dev, staging and test, and a multi-stage flow where one early failure blocked everything after it.</p>
+    <p>On the HRMS side, just preparing the right employee data for a Job Separation or Employee Transfer test took an hour by hand.</p>
+  </Fragment>
+
+  <figure slot="figure" class="cs-figure reveal">
+    <ol class="pipeline">
+      <li><span class="label">01</span>Environment config<span class="pipeline-sub">dev · staging · test</span></li>
+      <li><span class="label">02</span>Data-prep scripts<span class="pipeline-sub">Job Separation · Transfer</span></li>
+      <li><span class="label">03</span>Fixtures<span class="pipeline-sub">pytest</span></li>
+      <li><span class="label">04</span>ePMS + HRMS flows<span class="pipeline-sub">Playwright</span></li>
+      <li><span class="label">05</span>Tests<span class="pipeline-sub">one employee's journey</span></li>
+      <li class="is-last"><span class="label">06</span>Allure report<span class="pipeline-sub">readable by anyone</span></li>
+    </ol>
+    <figcaption>How the framework was layered, from configuration to report. Generalised; no proprietary code.</figcaption>
+  </figure>
+
+  <Fragment slot="looking-back">
+    <p>This was my work at BRAC IT Services until October 2026; I no longer maintain it. If I built it again, I'd wire it into a CI pipeline from day one and prepare test data through APIs rather than the UI, to cut the run time further.</p>
+    <p style="font-size: 16px">See the public version of this pattern: <a href="https://github.com/nawer-faria">playwright-pytest-blueprint</a> (in progress).</p>
+  </Fragment>
+</CaseStudy>

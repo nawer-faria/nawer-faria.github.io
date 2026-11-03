@@ -1,0 +1,62 @@
+---
+import CaseStudy from '../../layouts/CaseStudy.astro';
+---
+
+<CaseStudy
+  number="02"
+  title="Modernizing a legacy Java UI suite"
+  subtitle="Moving the part of the suite I worked on from a niche wrapper on Windows to a standard Selenium, TestNG and Gradle setup on Ubuntu."
+  description="Case study: a gradual migration of a Java UI test suite from FluentLenium on Windows to Selenium WebDriver, TestNG and Gradle on Ubuntu."
+  facts={[
+    { label: 'Role', value: 'Senior SQA Engineer' },
+    { label: 'Timeline', value: 'Early 2026 · 1–2 months, alongside release work' },
+    { label: 'Stack', value: 'Java · Selenium WebDriver · TestNG · Gradle · Ubuntu' },
+    { label: 'Scope', value: 'Partial migration: the modules I tested' },
+  ]}
+  approach={[
+    { lead: 'Migrated gradually, not all at once.', text: 'I moved only the part of the suite I actively used, so testing never stopped during releases.' },
+    { lead: 'Rewrote the tests on plain Selenium WebDriver,', text: 'the most widely used and documented option.' },
+    { lead: 'Organized runs with TestNG and builds with Gradle,', text: 'so the suite builds and runs with one command.' },
+    { lead: 'Moved the toolchain from Windows to Ubuntu.', text: '' },
+  ]}
+  results={[
+    'The migrated part runs on standard Selenium WebDriver and TestNG.',
+    'Builds and runs with a single Gradle command.',
+    'Runs on Ubuntu, no longer tied to one Windows setup.',
+  ]}
+  next={{ href: '/work/bank-integration/', kicker: 'Next · Case study 03', title: 'Bank integration: BRAC with SCB and HSBC →' }}
+>
+  <Fragment slot="context">
+    <p>The Java UI automation project was built on FluentLenium, a wrapper around Selenium, and ran on Windows machines.</p>
+  </Fragment>
+
+  <Fragment slot="problem">
+    <p>FluentLenium has a far smaller community than plain Selenium, so answers, examples and upgrade paths were harder to find. And because the suite was tied to a Windows setup, it was hard to run it the same way anywhere else.</p>
+  </Fragment>
+
+  <figure slot="figure" class="cs-figure reveal">
+    <div class="ba">
+      <div class="ba-card ba-before">
+        <p class="label">Before</p>
+        <ul>
+          <li>FluentLenium</li>
+          <li>Windows machines</li>
+          <li>Hard to run elsewhere</li>
+        </ul>
+      </div>
+      <div class="ba-card ba-after">
+        <p class="label">After</p>
+        <ul>
+          <li>Selenium WebDriver + TestNG</li>
+          <li>Gradle builds</li>
+          <li>Ubuntu</li>
+        </ul>
+      </div>
+    </div>
+    <figcaption>The migrated part of the suite, before and after.</figcaption>
+  </figure>
+
+  <Fragment slot="looking-back">
+    <p>I chose a gradual migration over a big rewrite. It kept testing going during releases, at the cost of two styles living side by side for a while. The natural next steps were migrating the remaining modules and running the suite in CI.</p>
+  </Fragment>
+</CaseStudy>

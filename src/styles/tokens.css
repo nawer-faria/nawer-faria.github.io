@@ -1,0 +1,84 @@
+/* Release Ledger — design tokens.
+   Source of truth: the "Release Ledger" design system. Change values there first, then here. */
+
+:root {
+  /* Colour · light */
+  --paper: #f7f5f0;
+  --surface: #ffffff;
+  --surface-sunk: #efece5;
+  --ink: #16181d;
+  --ink-2: #3f434a;
+  --muted: #5b5f66;
+  --hairline: #d9d5cc;
+  --hairline-strong: #b9b4a8;
+  --accent: #1f7a5a;
+  --report-bar: #16181d;
+  --report-pass: #7fd1ae;
+  --tint-cool: #e6ecf2;
+  color-scheme: light;
+
+  /* Type */
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 120px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --container-max: 1200px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --measure-body: 66ch;
+  --tap-min: 44px;
+}
+
+/* Colour · dark (chosen with the toggle, saved per visitor) */
+:root[data-theme="dark"] {
+  --paper: #141519;
+  --surface: #1c1e23;
+  --surface-sunk: #22252b;
+  --ink: #edeae3;
+  --ink-2: #c9c5bd;
+  --muted: #9a9aa0;
+  --hairline: #2e3138;
+  --hairline-strong: #454952;
+  --accent: #5fbf95;
+  --report-bar: #edeae3;
+  --report-pass: #17654a;
+  --tint-cool: #1e2530;
+  color-scheme: dark;
+}
+
+/* Colour · dark (system setting, when JavaScript is off) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --paper: #141519;
+    --surface: #1c1e23;
+    --surface-sunk: #22252b;
+    --ink: #edeae3;
+    --ink-2: #c9c5bd;
+    --muted: #9a9aa0;
+    --hairline: #2e3138;
+    --hairline-strong: #454952;
+    --accent: #5fbf95;
+    --report-bar: #edeae3;
+    --report-pass: #17654a;
+    --tint-cool: #1e2530;
+    color-scheme: dark;
+  }
+}

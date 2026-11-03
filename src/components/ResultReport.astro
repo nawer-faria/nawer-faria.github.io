@@ -1,0 +1,21 @@
+---
+// The site's signature: every case study ends with its results written as passing checks.
+// Each line may contain <strong> for the numbers. Never list a result that isn't true.
+interface Props {
+  results: string[];
+}
+const { results } = Astro.props;
+const count = `${results.length} / ${results.length} passed`;
+---
+
+<div class="report" data-testid="result-report">
+  <div class="report-bar">
+    <span>outcome.report</span>
+    <span class="report-count" data-testid="result-count">{count}</span>
+  </div>
+  <ul class="report-lines">
+    {results.map((line) => (
+      <li><span class="tick" aria-hidden="true">✓</span><span set:html={line} /></li>
+    ))}
+  </ul>
+</div>

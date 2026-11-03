@@ -57,4 +57,3 @@ Every push to `main` runs **Test and deploy** (`.github/workflows/deploy.yml`): 
 
 When the public repos are live, point their `href` in `src/data/site.ts` at the repo URLs and change their status.
 # nawer-faria.github.io
-# nawer-faria.github.io

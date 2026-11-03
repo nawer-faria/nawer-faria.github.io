@@ -1,0 +1,87 @@
+---
+import CaseStudy from '../../layouts/CaseStudy.astro';
+---
+
+<CaseStudy
+  number="03"
+  title="Bank integration: BRAC with SCB and HSBC"
+  subtitle="Connecting BRAC's microfinance platform to two global banks, so loans reach clients and every result comes back right."
+  description="Case study: QA for BRAC's loan-disbursement integrations with Standard Chartered Bank and HSBC — two launches in 2025 with zero critical defects."
+  facts={[
+    { label: 'Role', value: 'Senior SQA Engineer · test strategy & sign-off' },
+    { label: 'Timeline', value: 'SCB live mid-2025 · HSBC live end-2025' },
+    { label: 'Stack', value: 'REST Assured · Postman · Bearer / JWT · JIRA · Zephyr' },
+    { label: 'Scope', value: 'Loan disbursement: ERP → ESB → middleware → bank → back' },
+  ]}
+  approach={[
+    { lead: 'Mapped the full money path,', text: "from the disbursement request to the bank's MT940 and MT942 statements, and designed tests around every hand-off." },
+    { lead: 'Planned for failure as carefully as success.', text: 'Functional, integration and regression plans covered disbursements the bank rejected, not just the ones it accepted.' },
+    { lead: "Automated the platform's APIs", text: 'with REST Assured and Postman, including Bearer/JWT authentication, so key checks repeated on every release.' },
+    { lead: 'Ran the release gate.', text: 'Defects went into JIRA and Zephyr with evidence and severity, and sign-off came only when the critical path was clean.' },
+  ]}
+  results={[
+    'SCB integration went live in mid-2025 with <strong>zero critical defects</strong>.',
+    'HSBC integration went live at the end of 2025 with <strong>zero critical defects</strong>.',
+    "Success and failure paths verified end to end, from disbursement request to the bank's MT940 and MT942 statements.",
+  ]}
+  next={{ href: '/#work', kicker: "That's all three", title: '← Back to all work' }}
+>
+  <Fragment slot="context">
+    <p>BRAC, one of the world's largest NGOs, disburses microfinance loans to its clients through partner banks. In 2025, BRAC integrated its microfinance platform directly with Standard Chartered Bank (SCB) and then The Hongkong and Shanghai Banking Corporation (HSBC). I was responsible for QA on both integrations, from test planning to release sign-off.</p>
+    <p>Each disbursement travelled from the microfinance ERP through BRAC's message broker and BRAC's own bank-integration middleware to the bank's host-to-host (H2H) channel. The bank's results came back as SWIFT MT940 and MT942 statements.</p>
+  </Fragment>
+
+  <Fragment slot="problem">
+    <p>Every step was a hand-off between systems owned by different teams, two of them global banks. A disbursement could fail at any point, and the platform's records had to match what the bank actually did. Here, production bugs move money.</p>
+  </Fragment>
+
+  <figure slot="figure-before" class="cs-figure reveal">
+    <div class="diagram" tabindex="0" role="region" aria-label="Diagram of the disbursement path (scrolls sideways on small screens)">
+      <svg viewBox="0 0 1104 336" role="img" aria-labelledby="dg-title dg-desc">
+        <title id="dg-title">The disbursement path between BRAC and its partner banks</title>
+        <desc id="dg-desc">A disbursement instruction flows from BRAC's microfinance ERP to the ESB message broker, then BRAC's bank-integration middleware, then the bank's host-to-host channel at SCB or HSBC. The result returns from the bank as SWIFT MT940 and MT942 statements, back through the middleware and the ESB to the ERP, which records the result for each loan.</desc>
+        <defs>
+          <marker id="head-out" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="d-head-out" d="M0 0 L10 5 L0 10 Z"></path></marker>
+          <marker id="head-in" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="d-head-in" d="M0 0 L10 5 L0 10 Z"></path></marker>
+        </defs>
+
+        <text class="d-flow" x="8" y="52">① Disbursement instruction →</text>
+
+        <rect class="d-band" x="0" y="80" width="800" height="184" rx="8"></rect>
+        <rect class="d-band-cool" x="904" y="80" width="200" height="184" rx="8"></rect>
+        <text class="d-group" x="14" y="100">BRAC</text>
+        <text class="d-group" x="918" y="100">PARTNER BANKS</text>
+
+        <line class="d-out" x1="184" y1="157" x2="306" y2="157" marker-end="url(#head-out)"></line>
+        <line class="d-out" x1="488" y1="157" x2="610" y2="157" marker-end="url(#head-out)"></line>
+        <line class="d-out" x1="792" y1="157" x2="914" y2="157" marker-end="url(#head-out)"></line>
+        <line class="d-in" x1="312" y1="203" x2="190" y2="203" marker-end="url(#head-in)"></line>
+        <line class="d-in" x1="616" y1="203" x2="494" y2="203" marker-end="url(#head-in)"></line>
+        <line class="d-in" x1="920" y1="203" x2="798" y2="203" marker-end="url(#head-in)"></line>
+
+        <rect class="d-node" x="8" y="112" width="176" height="136" rx="6"></rect>
+        <rect class="d-node" x="312" y="112" width="176" height="136" rx="6"></rect>
+        <rect class="d-node" x="616" y="112" width="176" height="136" rx="6"></rect>
+        <rect class="d-node" x="920" y="112" width="176" height="136" rx="6"></rect>
+
+        <text text-anchor="middle"><tspan class="d-title" x="96" y="164">Microfinance ERP</tspan><tspan class="d-sub" x="96" y="190">Raises disbursements;</tspan><tspan class="d-sub" x="96" y="208">records each result</tspan></text>
+        <text text-anchor="middle"><tspan class="d-title" x="400" y="156">ESB / message</tspan><tspan class="d-title" x="400" y="176">broker</tspan><tspan class="d-sub" x="400" y="202">Queues and routes</tspan><tspan class="d-sub" x="400" y="220">messages</tspan></text>
+        <text text-anchor="middle"><tspan class="d-title" x="704" y="156">Bank-integration</tspan><tspan class="d-title" x="704" y="176">middleware</tspan><tspan class="d-sub" x="704" y="202">Talks to each bank;</tspan><tspan class="d-sub" x="704" y="220">reads SWIFT files</tspan></text>
+        <text text-anchor="middle"><tspan class="d-title" x="1008" y="172">Bank H2H channel</tspan><tspan class="d-sub" x="1008" y="198">SCB · HSBC</tspan></text>
+
+        <text class="d-flow-in" x="856" y="232" text-anchor="middle">MT940 · MT942</text>
+        <text class="d-flow-in" x="8" y="304">← ② Result returned as SWIFT statements</text>
+      </svg>
+    </div>
+    <dl class="legend">
+      <div><dt>ESB · enterprise service bus</dt><dd>Carries every disbursement and every result between the ERP and the bank layer.</dd></div>
+      <div><dt>MT940 · SWIFT customer statement</dt><dd>End-of-day record of what actually posted to the account.</dd></div>
+      <div><dt>MT942 · SWIFT interim report</dt><dd>Intraday transaction updates, before the day closes.</dd></div>
+    </dl>
+    <figcaption>The money path I tested, simplified. Every arrow is a hand-off between teams, and a place a disbursement can fail.</figcaption>
+  </figure>
+
+  <Fragment slot="looking-back">
+    <p>Integration work taught me that the riskiest bugs live in the hand-offs between systems, not inside them. That's where most of my test design went, and it's how I still approach any system where money moves.</p>
+  </Fragment>
+</CaseStudy>

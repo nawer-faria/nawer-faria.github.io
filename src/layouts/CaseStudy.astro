@@ -1,0 +1,83 @@
+---
+import Base from './Base.astro';
+import ResultReport from '../components/ResultReport.astro';
+
+interface Props {
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  facts: { label: string; value: string }[];
+  approach: { lead: string; text: string }[];
+  results: string[];
+  next: { href: string; kicker: string; title: string };
+}
+
+const { number, title, subtitle, description, facts, approach, results, next } = Astro.props;
+---
+
+<Base title={`${title} · Faria Nawer`} description={description}>
+  <article>
+    <header class="cs-head container">
+      <p class="label">Case study {number} · BRAC IT Services</p>
+      <h1>{title}</h1>
+      <p class="cs-sub">{subtitle}</p>
+    </header>
+
+    <section class="facts" aria-label="Project facts">
+      <dl class="container">
+        {facts.map((f) => (
+          <div>
+            <dt>{f.label}</dt>
+            <dd>{f.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <div class="cs-body container">
+      <section class="cs-section reveal">
+        <h2>The context</h2>
+        <div class="cs-text"><slot name="context" /></div>
+      </section>
+
+      <section class="cs-section reveal">
+        <h2>The problem</h2>
+        <div class="cs-text"><slot name="problem" /></div>
+      </section>
+
+      <slot name="figure-before" />
+
+      <section class="cs-section reveal">
+        <h2>The approach</h2>
+        <ol class="steps">
+          {approach.map((s, i) => (
+            <li>
+              <span class="step-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span><strong>{s.lead}</strong> {s.text}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <slot name="figure" />
+
+      <section class="cs-section reveal" aria-labelledby="result-heading">
+        <h2 id="result-heading">The result</h2>
+        <ResultReport results={results} />
+      </section>
+
+      <section class="cs-section reveal">
+        <h2>Looking back</h2>
+        <div class="cs-text"><slot name="looking-back" /></div>
+      </section>
+    </div>
+
+    <a class="cs-next" href={next.href}>
+      <span class="cs-next-inner container">
+        <span class="label">{next.kicker}</span>
+        <span class="cs-next-title">{next.title}</span>
+      </span>
+    </a>
+  </article>
+</Base>

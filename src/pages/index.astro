@@ -1,0 +1,169 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import portrait from '../assets/faria-portrait.jpg';
+import {
+  person, proof, work, openSource, principles, experience, toolkit, education, publication, certifications,
+} from '../data/site';
+---
+
+<Base
+  title="Faria Nawer · Senior SQA Engineer"
+  description="Faria Nawer builds the test automation that lets teams release with confidence: frameworks, API suites and release quality gates for fintech and enterprise systems."
+>
+  <!-- Hero -->
+  <section class="hero container" aria-labelledby="hero-name">
+    <div class="hero-copy">
+      <p class="status"><span class="dot" aria-hidden="true"></span>{person.status}</p>
+      <h1 id="hero-name">Faria<br />Nawer</h1>
+      <p class="hero-lede">I build the test automation that lets teams release with <em>confidence</em>.</p>
+      <p class="hero-sub">4.5+ years designing frameworks, API suites and release quality gates for fintech, banking-integration and enterprise HR platforms.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#work">View work
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a class="btn btn-secondary" href={person.cv}>Download CV
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"></path></svg>
+        </a>
+      </div>
+    </div>
+    <figure class="hero-figure">
+      <Image
+        class="portrait"
+        src={portrait}
+        alt="Portrait of Faria Nawer"
+        widths={[240, 440, 856]}
+        sizes="(max-width: 820px) 168px, 440px"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <figcaption class="meta"><span>{person.location}</span><span>Python · Java</span></figcaption>
+    </figure>
+  </section>
+
+  <!-- Proof strip -->
+  <section class="proof" aria-label="Results">
+    <ul class="proof-grid container">
+      {proof.map((p) => (
+        <li class="proof-item">
+          <p class="proof-num">{p.num}</p>
+          <p class="proof-text">{p.text}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- 01 Selected work -->
+  <section id="work" class="section container reveal" aria-labelledby="work-title">
+    <SectionHeading
+      id="work-title"
+      label="01 — Selected work"
+      title="Three problems, solved properly."
+      note="Client details generalised. No proprietary code is shown."
+    />
+    <ul class="work-list">
+      {work.map((w) => (
+        <li>
+          <a class="work-link" href={w.href}>
+            <span class="work-num" aria-hidden="true">{w.num}</span>
+            <span>
+              <span class="work-title">{w.title}</span>
+              <span class="work-summary">{w.summary}</span>
+              <span class="work-stack meta">{w.stack}</span>
+            </span>
+            <span class="work-cta" aria-hidden="true">Read case study →</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="oss">
+      <p class="label">Open source</p>
+      <ul class="oss-grid">
+        {openSource.map((r) => (
+          <li>
+            <a class="card" href={r.href}>
+              <span class="card-head"><span>{r.name}</span><span class="card-badge">{r.status}</span></span>
+              <span class="card-text">{r.text}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 02 How I work -->
+  <section id="approach" class="section container reveal" aria-labelledby="approach-title">
+    <SectionHeading id="approach-title" label="02 — How I work" title="Four principles I test by." />
+    <ol class="principles">
+      {principles.map((p, i) => (
+        <li class="principle">
+          <span class="principle-num" aria-hidden="true">✓ {String(i + 1).padStart(2, '0')}</span>
+          <h3>{p.title}</h3>
+          <p>{p.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- 03 Experience -->
+  <section id="experience" class="section container reveal" aria-labelledby="xp-title">
+    <SectionHeading id="xp-title" label="03 — Experience" title="From test cases to quality gates." />
+    <ol class="xp-list">
+      {experience.map((x) => (
+        <li class="xp">
+          <p class:list={['xp-date', { 'is-current': x.current }]}>
+            {x.current && <span class="dot" aria-hidden="true"></span>}
+            {x.date}
+          </p>
+          <div>
+            <p class="xp-role">{x.role}</p>
+            <p class="xp-desc">{x.desc}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- 04 Toolkit -->
+  <section id="toolkit" class="section container reveal" aria-labelledby="tools-title">
+    <SectionHeading id="tools-title" label="04 — Toolkit" title="Tools, grouped by the job they do." />
+    <div class="tools">
+      {toolkit.map((t) => (
+        <div class="tool">
+          <h3>{t.group}</h3>
+          <ul>{t.items.map((i) => <li>{i}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 05 Credentials -->
+  <section id="credentials" class="section container reveal" aria-label="Education, publication and certifications">
+    <div class="creds">
+      <div class="cred-group">
+        <h2 class="label">05 — Education</h2>
+        {education.map((e) => (
+          <div class="cred">
+            <p class="cred-title">{e.title}</p>
+            <p class="cred-sub">{e.sub}</p>
+          </div>
+        ))}
+      </div>
+      <div class="cred-group">
+        <h2 class="label">Publication</h2>
+        <div class="cred">
+          <p class="cred-title serif">{publication.title}</p>
+          <p class="cred-sub">{publication.sub}</p>
+        </div>
+      </div>
+      <div class="cred-group">
+        <h2 class="label">Certifications</h2>
+        <ul class="cred-list">
+          {certifications.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>

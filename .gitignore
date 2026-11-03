@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.astro/
+
+# test output
+test-results/
+playwright-report/
+blob-report/
+
+# system
+.DS_Store
+.env
