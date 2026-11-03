@@ -120,6 +120,18 @@ test.describe('Content rules', () => {
     });
   }
 
+  test('CV links open in a new tab', async ({ page }) => {
+    for (const { path } of PAGES) {
+      await page.goto(path);
+      const links = page.locator('[data-cv-link]');
+      expect(await links.count(), `CV links on ${path}`).toBeGreaterThan(0);
+      for (const link of await links.all()) {
+        await expect(link).toHaveAttribute('target', '_blank');
+        await expect(link).toHaveAttribute('rel', /noopener/);
+      }
+    }
+  });
+
   test('no draft placeholders are published', async ({ page }) => {
     for (const { path } of PAGES) {
       await page.goto(path);

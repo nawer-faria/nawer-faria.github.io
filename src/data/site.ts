@@ -13,9 +13,10 @@ export const person = {
 };
 
 export const proof = [
-  { num: 'Zero', text: 'critical defects at launch for enterprise banking integrations with SCB and HSBC.' },
-  { num: '60%+', text: 'less manual testing on the SmartMF microfinance platform, through one-click API and regression automation.' },
+  { num: 'Zero', text: 'critical defects at launch for the SCB and HSBC banking integrations, where I led the QA team.' },
+  { num: '60%+', text: 'less manual testing on the SmartMF, HRMS and ePMS modules, through one-click API and regression automation.' },
   { num: '2h → 20m', text: 'regression time for ePMS and HRMS, after replacing manual runs with a Playwright suite.' },
+  { num: '1h → 12m', text: 'test-data prep for HRMS Job Separation and Employee Transfer, two of its longest flows, now 10–12 minutes with scenario-based scripts.' },
 ];
 
 export const work = [
@@ -23,7 +24,7 @@ export const work = [
     num: '01',
     href: '/work/epms-hrms-automation/',
     title: 'Building ePMS & HRMS automation from zero',
-    summary: "A Python + Playwright + pytest suite that walked one employee's full review journey end to end, cutting regression from 2 hours to 20 minutes.",
+    summary: 'A Python + Playwright + pytest suite that cut ePMS and HRMS regression from 2 hours to 20 minutes, plus data-prep scripts that turned an hour of HRMS setup into 10–12 minutes.',
     stack: 'Python · Playwright · pytest · Allure · GitLab',
   },
   {
@@ -37,7 +38,7 @@ export const work = [
     num: '03',
     href: '/work/bank-integration/',
     title: 'Bank integration: BRAC with SCB and HSBC',
-    summary: "QA for BRAC's bank integrations with SCB and HSBC: two launches in 2025, zero critical defects.",
+    summary: "I led the QA team for BRAC's bank integrations with SCB and HSBC: two launches in 2025, zero critical defects.",
     stack: 'REST Assured · Postman · Bearer / JWT · JIRA · Zephyr',
   },
 ];
@@ -75,7 +76,7 @@ export const experience = [
   {
     date: 'Jan 2025 – Oct 2026',
     role: 'Senior SQA Engineer · BRAC IT Services',
-    desc: 'Built ePMS and HRMS automation, modernized the Java suite, and owned the release gate for SmartMF and the SCB and HSBC integrations.',
+    desc: 'Led the QA team for the SCB and HSBC bank integrations, built ePMS and HRMS automation, modernized the Java suite, and owned the release gate for SmartMF.',
   },
   {
     date: 'Jun 2022 – Dec 2024',

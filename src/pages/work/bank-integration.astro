@@ -6,14 +6,15 @@ import CaseStudy from '../../layouts/CaseStudy.astro';
   number="03"
   title="Bank integration: BRAC with SCB and HSBC"
   subtitle="Connecting BRAC's microfinance platform to two global banks, so loans reach clients and every result comes back right."
-  description="Case study: QA for BRAC's loan-disbursement integrations with Standard Chartered Bank and HSBC — two launches in 2025 with zero critical defects."
+  description="Case study: leading QA for BRAC's loan-disbursement integrations with Standard Chartered Bank and HSBC — two launches in 2025 with zero critical defects."
   facts={[
-    { label: 'Role', value: 'Senior SQA Engineer · test strategy & sign-off' },
+    { label: 'Role', value: 'QA lead · led the QA team, test strategy & sign-off' },
     { label: 'Timeline', value: 'SCB live mid-2025 · HSBC live end-2025' },
     { label: 'Stack', value: 'REST Assured · Postman · Bearer / JWT · JIRA · Zephyr' },
     { label: 'Scope', value: 'Loan disbursement: ERP → ESB → middleware → bank → back' },
   ]}
   approach={[
+    { lead: 'Led the QA team across both launches,', text: 'owning the test plan and the final sign-off for each bank.' },
     { lead: 'Mapped the full money path,', text: "from the disbursement request to the bank's MT940 and MT942 statements, and designed tests around every hand-off." },
     { lead: 'Planned for failure as carefully as success.', text: 'Functional, integration and regression plans covered disbursements the bank rejected, not just the ones it accepted.' },
     { lead: "Automated the platform's APIs", text: 'with REST Assured and Postman, including Bearer/JWT authentication, so key checks repeated on every release.' },
@@ -27,7 +28,7 @@ import CaseStudy from '../../layouts/CaseStudy.astro';
   next={{ href: '/#work', kicker: "That's all three", title: '← Back to all work' }}
 >
   <Fragment slot="context">
-    <p>BRAC, one of the world's largest NGOs, disburses microfinance loans to its clients through partner banks. In 2025, BRAC integrated its microfinance platform directly with Standard Chartered Bank (SCB) and then The Hongkong and Shanghai Banking Corporation (HSBC). I was responsible for QA on both integrations, from test planning to release sign-off.</p>
+    <p>BRAC, one of the world's largest NGOs, disburses microfinance loans to its clients through partner banks. In 2025, BRAC integrated its microfinance platform directly with Standard Chartered Bank (SCB) and then The Hongkong and Shanghai Banking Corporation (HSBC). I led the project's QA and the QA team for both integrations, from test planning to release sign-off.</p>
     <p>Each disbursement travelled from the microfinance ERP through BRAC's message broker and BRAC's own bank-integration middleware to the bank's host-to-host (H2H) channel. The bank's results came back as SWIFT MT940 and MT942 statements.</p>
   </Fragment>
 
