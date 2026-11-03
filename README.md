@@ -56,4 +56,3 @@ Every push to `main` runs **Test and deploy** (`.github/workflows/deploy.yml`): 
 | Your portrait | replace `src/assets/faria-portrait.jpg` (4:5) |
 
 When the public repos are live, point their `href` in `src/data/site.ts` at the repo URLs and change their status.
-# nawer-faria.github.io
