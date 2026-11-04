@@ -120,6 +120,11 @@ import {
           <div>
             <p class="xp-role">{x.role}</p>
             <p class="xp-desc">{x.desc}</p>
+            {x.achievements && (
+              <ul class="xp-wins" aria-label={`Achievements: ${x.role}`}>
+                {x.achievements.map((a) => <li>{a}</li>)}
+              </ul>
+            )}
           </div>
         </li>
       ))}

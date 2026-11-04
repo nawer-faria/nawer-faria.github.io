@@ -13,10 +13,10 @@ export const person = {
 };
 
 export const proof = [
-  { num: 'Zero', text: 'critical defects at launch for the SCB and HSBC banking integrations, where I led the QA team.' },
-  { num: '60%+', text: 'less manual testing on the SmartMF, HRMS and ePMS modules, through one-click API and regression automation.' },
-  { num: '2h → 20m', text: 'regression time for ePMS and HRMS, after replacing manual runs with a Playwright suite.' },
-  { num: '1h → 12m', text: 'test-data prep for HRMS Job Separation and Employee Transfer, two of its longest flows, now 10–12 minutes with scenario-based scripts.' },
+  { num: '2 / 2', text: 'bank integration with SCB and HSBC, where I led the QA team and prevented critical defects from reaching production.' },
+  { num: '60%+', text: 'less manual testing across the Microfinance, SmartMF, HRMS and ePMS modules, through one-click API and regression automation.' },
+  { num: '6×', text: 'faster regression for SmartMF, HRMS and ePMS: a two-hour manual run became a twenty-minute automated one.' },
+  { num: '5×', text: 'faster test-data prep for HRMS Job Separation and Employee Transfer, two of its longest flows.' },
 ];
 
 export const work = [
@@ -24,7 +24,7 @@ export const work = [
     num: '01',
     href: '/work/epms-hrms-automation/',
     title: 'Building ePMS & HRMS automation from zero',
-    summary: 'A Python + Playwright + pytest suite that cut ePMS and HRMS regression from 2 hours to 20 minutes, plus data-prep scripts that turned an hour of HRMS setup into 10–12 minutes.',
+    summary: 'A Python + Playwright + pytest suite that made ePMS and HRMS regression 6× faster, plus data-prep scripts that made HRMS test setup 5× faster.',
     stack: 'Python · Playwright · pytest · Allure · GitLab',
   },
   {
@@ -38,7 +38,7 @@ export const work = [
     num: '03',
     href: '/work/bank-integration/',
     title: 'Bank integration: BRAC with SCB and HSBC',
-    summary: "I led the QA team for BRAC's bank integrations with SCB and HSBC: two launches in 2025, zero critical defects.",
+    summary: "I led the QA team for BRAC's bank integration with SCB and HSBC: two launches in 2025, with critical defects prevented from reaching production.",
     stack: 'REST Assured · Postman · Bearer / JWT · JIRA · Zephyr',
   },
 ];
@@ -66,7 +66,14 @@ export const principles = [
   { title: 'The release gate is a promise.', text: "Signing off a release means I'd stand behind it in production, and the evidence is written down." },
 ];
 
-export const experience = [
+// Each role: a one-line summary (desc) and optional achievements, one short line each.
+export const experience: {
+  date: string;
+  current?: boolean;
+  role: string;
+  desc: string;
+  achievements?: string[];
+}[] = [
   {
     date: 'From Nov 2026',
     current: true,
@@ -76,22 +83,45 @@ export const experience = [
   {
     date: 'Jan 2025 – Oct 2026',
     role: 'Senior SQA Engineer · BRAC IT Services',
-    desc: 'Led the QA team for the SCB and HSBC bank integrations, built ePMS and HRMS automation, modernized the Java suite, and owned the release gate for SmartMF.',
+    desc: 'Quality lead across SmartMF, HRMS and ePMS, taking releases from manual checks to one-click automation.',
+    achievements: [
+      "Led QA for BRAC's bank integration with SCB and HSBC (loan disbursement phase) from test plan to go-live, signing off both releases.",
+      'Owned the ePMS module and built its Playwright + pytest framework from scratch.',
+      "Automated the HRMS basic flow for the smoke suite, and turned HRMS's two longest flows, Job Separation and Employee Transfer, into on-demand data scripts for reports, cross-module tests and CRs.",
+      'Fully automated the Smart PO and BM loan-proposal and member-admission APIs with REST Assured: one click sends data straight to the ERP buffer.',
+      'Cut manual testing by 60%+ across SmartMF, HRMS and ePMS with one-click API and regression automation.',
+      'Strengthened defect detection by 35% through a structured API automation strategy.',
+      'Migrated the Java UI suite from FluentLenium to Selenium WebDriver, TestNG and Gradle.',
+      'Owned the SmartMF release lifecycle: validation, defect governance and release approval.',
+    ],
   },
   {
     date: 'Jun 2022 – Dec 2024',
     role: 'SQA Engineer · BRAC IT Services',
-    desc: "Functional, integration and regression testing for Microfinance and HRMS; started API automation on SmartMF's OTC APIs.",
+    desc: 'Functional, integration and regression testing for Microfinance and HRMS, and the start of my API automation work.',
+    achievements: [
+      "Automated SmartMF's OTC APIs with REST Assured.",
+      'Tested Android and iOS releases of the SmartMF apps.',
+      'Validated the Microfinance and Procurement modules across functional, integration and regression cycles.',
+    ],
   },
   {
     date: 'Feb – May 2022',
     role: 'SQA Engineer Intern · BRAC IT Services',
     desc: 'Module testing, defect documentation and requirement analysis on enterprise releases.',
+    achievements: [
+      'Moved into a full SQA Engineer role after four months.',
+      'Validated modules across release cycles and logged defects with clear evidence.',
+    ],
   },
   {
     date: 'Nov 2020 – Dec 2021',
     role: 'Research & Development Engineer · Artificial Intelligence Bangladesh',
-    desc: 'Tested and validated R&D prototypes; taught workshops on applied AI and software.',
+    desc: 'Applied research, prototype testing and teaching.',
+    achievements: [
+      'Delivered technical workshops on emerging technology for learners and professionals.',
+      'Tested and validated research prototypes and documented the results.',
+    ],
   },
 ];
 
