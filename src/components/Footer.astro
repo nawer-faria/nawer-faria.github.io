@@ -4,14 +4,17 @@ const year = new Date().getFullYear();
 ---
 
 <footer id="contact" class="contact">
-  <div class="contact-inner container">
-    <h2>Let's talk about <em>quality.</em></h2>
+  <div class="contact-inner">
+    <h2>Let's talk about <em class="accent-em">quality.</em></h2>
+    <p class="contact-sub">Happy to talk test strategy, automation, or anything where software meets money and people's records.</p>
     <ul class="contact-links">
-      <li><a href={`mailto:${person.email}`}>{person.email}</a></li>
+      <li><a class="is-primary" href={`mailto:${person.email}`}>{person.email}</a></li>
       <li><a href={person.linkedin} rel="me">LinkedIn</a></li>
       <li><a href={person.github} rel="me">GitHub</a></li>
-      <li><a href={person.cv} target="_blank" rel="noopener" data-cv-link>CV (PDF)<span class="sr-only"> (opens in a new tab)</span></a></li>
+      <li><a href={person.cv} target="_blank" rel="noopener" data-cv-link>CV (PDF) ↗<span class="sr-only"> (opens in a new tab)</span></a></li>
     </ul>
+  </div>
+  <div class="container">
     <div class="footer-bar meta">
       <span>© {year} {person.name} · nawer-faria.github.io</span>
       <span>Tested with Playwright on every release.</span>

@@ -1,0 +1,55 @@
+---
+import CaseStudy from '../../layouts/CaseStudy.astro';
+---
+
+<CaseStudy
+  number="02"
+  title="One click to the ERP: SmartMF API automation"
+  subtitle="Without the field team's mobile apps or a device, I automated their API flow end to end, so test data reaches the ERP with one click."
+  description="Case study: automating the Smart PO and Smart BM loan-proposal and member-admission APIs with Java and REST Assured, so test data reaches BRAC's microfinance ERP buffer in one click."
+  facts={[
+    { label: 'Role', value: 'Microfinance QA · built the automation' },
+    { label: 'Timeline', value: 'Dec 2024 – Feb 2025' },
+    { label: 'Stack', value: 'Java · REST Assured · Bearer tokens' },
+    { label: 'Scope', value: 'Loan proposals and member admissions: Smart PO → Smart BM → ERP buffer' },
+  ]}
+  approach={[
+    { lead: "Mapped the field apps' API flow,", text: 'from proposal to approval, so I could do what Smart PO and Smart BM do without the apps or a device.' },
+    { lead: 'Automated each call in Java with REST Assured,', text: 'authenticated with Bearer tokens.' },
+    { lead: 'Made the flow dynamic:', text: "each step reads the previous response, and Smart BM's list call picks up the first pending proposal, so nothing is hard-coded and every run creates fresh data." },
+    { lead: 'Chained it behind a single run', text: "for both loan proposals and member admissions, ending with the data in the ERP's buffer screens." },
+  ]}
+  results={[
+    'Loan proposals and member admissions reach the ERP buffer in <strong>one click</strong>.',
+    'No mobile app or device needed to create test data.',
+    'Nothing hard-coded: each run picks up its own proposal from live API responses.',
+    'Part of a <strong>60%+</strong> cut in manual testing across SmartMF, HRMS and ePMS.',
+  ]}
+  next={{ href: '/work/epms-hrms-automation/', kicker: 'Next · Case study 03', title: 'Building ePMS & HRMS automation from zero →' }}
+>
+  <Fragment slot="context">
+    <p>SmartMF is BRAC's microfinance platform. Field staff use two of its mobile apps: <strong>Smart PO</strong> to propose loans and admit new members, and <strong>Smart BM</strong> to review and approve them.</p>
+    <p>Approved proposals then arrive in the Microfinance ERP's buffer, where they are processed, and where I tested them.</p>
+  </Fragment>
+
+  <Fragment slot="problem">
+    <p>As Microfinance QA I worked in the ERP, but I had neither the field apps nor a device to run them. Without approved proposals the buffer stayed empty, and there was nothing to test.</p>
+    <p>This was new work: there was no existing way for QA to create that data.</p>
+  </Fragment>
+
+  <figure slot="figure" class="cs-figure reveal">
+    <ol class="pipeline">
+      <li><span class="label">01</span>Smart PO proposes<span class="pipeline-sub">loan or member · propose API</span></li>
+      <li><span class="label">02</span>Proposal verified<span class="pipeline-sub">list API</span></li>
+      <li><span class="label">03</span>Smart BM picks it up<span class="pipeline-sub">list API · first pending</span></li>
+      <li><span class="label">04</span>Smart BM approves<span class="pipeline-sub">approve API</span></li>
+      <li class="is-last"><span class="label">05</span>ERP buffer<span class="pipeline-sub">data ready to test</span></li>
+    </ol>
+    <figcaption>The flow one click runs, from proposal to the ERP. Generalised; no proprietary code.</figcaption>
+  </figure>
+
+  <Fragment slot="looking-back">
+    <p>Going around the screens to the API turned a blocker into a one-click step. It's the approach I reach for whenever a device or a UI stands between QA and the data it needs.</p>
+    <p>This was my work at BRAC IT Services; I no longer maintain it.</p>
+  </Fragment>
+</CaseStudy>

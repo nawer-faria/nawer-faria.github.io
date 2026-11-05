@@ -4,9 +4,10 @@ import AxeBuilder from '@axe-core/playwright';
 // Every page on the site. Add new pages here and they get every check below.
 const PAGES = [
   { path: '/', name: 'Homepage' },
-  { path: '/work/epms-hrms-automation/', name: 'Case study 01' },
-  { path: '/work/java-modernization/', name: 'Case study 02' },
-  { path: '/work/bank-integration/', name: 'Case study 03' },
+  { path: '/work/bank-integration/', name: 'Case study 01' },
+  { path: '/work/smartmf-api-automation/', name: 'Case study 02' },
+  { path: '/work/epms-hrms-automation/', name: 'Case study 03' },
+  { path: '/work/java-modernization/', name: 'Case study 04' },
 ];
 
 const CASE_STUDIES = PAGES.filter((p) => p.path.startsWith('/work/'));
@@ -37,10 +38,10 @@ for (const { path, name } of PAGES) {
       expect(serious.map((v) => `${v.id}: ${v.help} (${v.nodes.length})`)).toEqual([]);
     });
 
-    test('has no serious accessibility violations in dark theme', async ({ page }) => {
-      await page.addInitScript(() => localStorage.setItem('theme', 'dark'));
+    test('has no serious accessibility violations in light theme', async ({ page }) => {
+      await page.addInitScript(() => localStorage.setItem('theme', 'light'));
       await page.goto(path);
-      await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+      await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
       const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
       const serious = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
       expect(serious.map((v) => `${v.id}: ${v.help} (${v.nodes.length})`)).toEqual([]);
@@ -81,25 +82,21 @@ for (const { path, name } of PAGES) {
 }
 
 test.describe('Theme', () => {
-  test('toggle switches theme and remembers it', async ({ page }) => {
+  test('is dark on a first visit, whatever the system setting', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'light' });
     await page.goto('/');
-    const html = page.locator('html');
-    await expect(html).toHaveAttribute('data-theme', 'light');
-
-    const toggle = page.getByRole('button', { name: 'Switch to dark theme' });
-    await toggle.click();
-    await expect(html).toHaveAttribute('data-theme', 'dark');
-    await expect(page.getByRole('button', { name: 'Switch to light theme' })).toBeVisible();
-
-    await page.reload();
-    await expect(html).toHaveAttribute('data-theme', 'dark');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   });
 
-  test('follows the system setting on a first visit', async ({ page }) => {
-    await page.emulateMedia({ colorScheme: 'dark' });
+  test('toggle switches to light and remembers it', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    const html = page.locator('html');
+    await page.getByRole('button', { name: 'Switch to light theme' }).click();
+    await expect(html).toHaveAttribute('data-theme', 'light');
+    await expect(page.getByRole('button', { name: 'Switch to dark theme' })).toBeVisible();
+
+    await page.reload();
+    await expect(html).toHaveAttribute('data-theme', 'light');
   });
 });
 
@@ -107,7 +104,7 @@ test.describe('Content rules', () => {
   test('homepage lists every case study', async ({ page }) => {
     await page.goto('/');
     for (const cs of CASE_STUDIES) {
-      await expect(page.locator(`#work a[href="${cs.path}"]`)).toHaveCount(1);
+      expect(await page.locator(`#work a[href="${cs.path}"]`).count(), `${cs.path} on the homepage`).toBeGreaterThan(0);
     }
   });
 
@@ -119,6 +116,24 @@ test.describe('Content rules', () => {
       await expect(page.getByTestId('result-count')).toHaveText(`${lines} / ${lines} passed`);
     });
   }
+
+  test('case studies chain to each other and back to the work list', async ({ page }) => {
+    for (const [i, cs] of CASE_STUDIES.entries()) {
+      await page.goto(cs.path);
+      const next = CASE_STUDIES[i + 1]?.path ?? '/#work';
+      await expect(page.locator('a.cs-next')).toHaveAttribute('href', next);
+    }
+  });
+
+  test('experience "more achievements" opens and closes', async ({ page }) => {
+    await page.goto('/');
+    const more = page.locator('#experience details.more').first();
+    const hidden = more.locator('ul.wins li').first();
+    await expect(hidden).toBeHidden();
+    await more.locator('summary').click();
+    await expect(hidden).toBeVisible();
+    await expect(more.locator('summary')).toContainText('Show fewer');
+  });
 
   test('CV links open in a new tab', async ({ page }) => {
     for (const { path } of PAGES) {

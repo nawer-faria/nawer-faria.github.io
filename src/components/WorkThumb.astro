@@ -1,0 +1,47 @@
+---
+// A small drawn picture for each work card. BRAC screens can't be shown, so each project gets a diagram of its idea.
+interface Props {
+  variant: 'bank' | 'api' | 'pipeline' | 'migration';
+}
+const { variant } = Astro.props;
+---
+
+<div class="thumb" aria-hidden="true">
+  {variant === 'bank' && (
+    <>
+      <div class="thumb-row">
+        <span class="thumb-node">ERP</span><span>→</span>
+        <span class="thumb-node">ESB</span><span>→</span>
+        <span class="thumb-node">middleware</span><span>→</span>
+        <span class="thumb-node is-bank">bank</span>
+      </div>
+      <span class="thumb-in">← MT940 · MT942</span>
+    </>
+  )}
+  {variant === 'api' && (
+    <>
+      <div class="thumb-row">
+        <span class="thumb-node">Smart PO · propose</span>
+        <span class="thumb-node">Smart BM · approve</span>
+      </div>
+      <span class="thumb-pill">▶ one click</span>
+      <span>↓ REST Assured</span>
+      <span class="thumb-node is-bank">ERP buffer</span>
+    </>
+  )}
+  {variant === 'pipeline' && (
+    <div class="thumb-row">
+      <span class="thumb-node">config</span><span>→</span>
+      <span class="thumb-node">fixtures</span><span>→</span>
+      <span class="thumb-node">flows</span><span>→</span>
+      <span class="thumb-node is-pass">report</span>
+    </div>
+  )}
+  {variant === 'migration' && (
+    <div class="thumb-row">
+      <span class="thumb-node is-old is-big">FluentLenium<br />Windows</span>
+      <span>→</span>
+      <span class="thumb-node is-pass is-big">Selenium · TestNG<br />Gradle · Ubuntu</span>
+    </div>
+  )}
+</div>

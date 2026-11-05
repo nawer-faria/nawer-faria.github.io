@@ -29,21 +29,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#141519" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#0e1014" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta name="author" content="Faria Nawer" />
     <script is:inline>
-      // Set the theme before first paint: saved choice, else the system setting.
+      // Set the theme before first paint: the visitor's saved choice, else dark (the default).
       (function () {
         var t = null;
         try { t = localStorage.getItem('theme'); } catch (e) {}
-        if (t !== 'light' && t !== 'dark') {
-          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
+        if (t !== 'light' && t !== 'dark') t = 'dark';
         document.documentElement.setAttribute('data-theme', t);
         document.documentElement.classList.add('js');
       })();

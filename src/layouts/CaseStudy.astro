@@ -24,8 +24,8 @@ const { number, title, subtitle, description, facts, approach, results, next } =
       <p class="cs-sub">{subtitle}</p>
     </header>
 
-    <section class="facts" aria-label="Project facts">
-      <dl class="container">
+    <section class="facts container" aria-label="Project facts">
+      <dl>
         {facts.map((f) => (
           <div>
             <dt>{f.label}</dt>
@@ -73,11 +73,13 @@ const { number, title, subtitle, description, facts, approach, results, next } =
       </section>
     </div>
 
-    <a class="cs-next" href={next.href}>
-      <span class="cs-next-inner container">
-        <span class="label">{next.kicker}</span>
-        <span class="cs-next-title">{next.title}</span>
-      </span>
-    </a>
+    <div class="container">
+      <a class="cs-next" href={next.href}>
+        <span class="cs-next-inner">
+          <span class="label">{next.kicker}</span>
+          <span class="cs-next-title">{next.title}</span>
+        </span>
+      </a>
+    </div>
   </article>
 </Base>

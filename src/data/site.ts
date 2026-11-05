@@ -19,27 +19,60 @@ export const proof = [
   { num: '5×', text: 'faster test-data prep for HRMS Job Separation and Employee Transfer, two of its longest flows.' },
 ];
 
-export const work = [
+export const about = {
+  paragraphs: [
+    "I'm a Senior SQA Engineer with 4.5+ years in fintech and enterprise software. At BRAC IT Services I tested the systems behind one of the world's largest NGOs: the platforms that move microfinance loans and member data, and the HR systems that hold people's jobs, transfers and performance reviews.",
+    "Along the way I moved from manual release testing to owning modules, building the automation and leading QA when it mattered most. I'm at my best where a bug would cost real money or a real person's record.",
+  ],
+  domains: [
+    { label: 'Financial services', text: 'Microfinance · SmartMF' },
+    { label: 'Banking', text: 'SCB · HSBC integration' },
+    { label: 'Enterprise HR', text: 'HRMS · ePMS' },
+  ],
+};
+
+// Selected work, in display order. `thumb` picks the small drawing on each card.
+export const work: {
+  num: string;
+  badge?: string;
+  href: string;
+  title: string;
+  summary: string;
+  tags: string[];
+  thumb: 'bank' | 'api' | 'pipeline' | 'migration';
+}[] = [
   {
     num: '01',
-    href: '/work/epms-hrms-automation/',
-    title: 'Building ePMS & HRMS automation from zero',
-    summary: 'A Python + Playwright + pytest suite that made ePMS and HRMS regression 6× faster, plus data-prep scripts that made HRMS test setup 5× faster.',
-    stack: 'Python · Playwright · pytest · Allure · GitLab',
-  },
-  {
-    num: '02',
-    href: '/work/java-modernization/',
-    title: 'Modernizing a legacy Java UI suite',
-    summary: 'Migrating from FluentLenium to Selenium WebDriver and TestNG with Gradle builds, and moving the toolchain from Windows to Ubuntu.',
-    stack: 'Java · Selenium WebDriver · TestNG · Gradle · Ubuntu',
-  },
-  {
-    num: '03',
+    badge: 'QA lead',
     href: '/work/bank-integration/',
     title: 'Bank integration: BRAC with SCB and HSBC',
     summary: "I led the QA team for BRAC's bank integration with SCB and HSBC: two launches in 2025, with critical defects prevented from reaching production.",
-    stack: 'REST Assured · Postman · Bearer / JWT · JIRA · Zephyr',
+    tags: ['REST Assured', 'Postman', 'Bearer / JWT', 'JIRA · Zephyr'],
+    thumb: 'bank',
+  },
+  {
+    num: '02',
+    href: '/work/smartmf-api-automation/',
+    title: 'One click to the ERP: SmartMF API automation',
+    summary: 'Fully automated the Smart PO and BM loan-proposal and member-admission APIs: one click sends the data straight to the ERP buffer.',
+    tags: ['Java', 'REST Assured', 'Bearer tokens'],
+    thumb: 'api',
+  },
+  {
+    num: '03',
+    href: '/work/epms-hrms-automation/',
+    title: 'Building ePMS & HRMS automation from zero',
+    summary: 'A Python + Playwright + pytest suite that made ePMS and HRMS regression 6× faster, plus data-prep scripts that made HRMS test setup 5× faster.',
+    tags: ['Python', 'Playwright', 'pytest', 'Allure'],
+    thumb: 'pipeline',
+  },
+  {
+    num: '04',
+    href: '/work/java-modernization/',
+    title: 'Modernizing a legacy Java UI suite',
+    summary: 'Migrating from FluentLenium to Selenium WebDriver and TestNG with Gradle builds, and moving the toolchain from Windows to Ubuntu.',
+    tags: ['Java', 'Selenium WebDriver', 'TestNG', 'Gradle'],
+    thumb: 'migration',
   },
 ];
 
@@ -49,13 +82,13 @@ export const openSource = [
     name: 'playwright-pytest-blueprint',
     status: 'In progress',
     href: 'https://github.com/nawer-faria',
-    text: 'Multi-environment Playwright + pytest framework with fixtures, page objects, Allure reports and GitHub Actions CI.',
+    text: 'Multi-environment Playwright + pytest framework with page objects, Allure reports and GitHub Actions CI.',
   },
   {
     name: 'restassured-oauth2-kit',
     status: 'In progress',
     href: 'https://github.com/nawer-faria',
-    text: 'A reusable REST Assured base class for OAuth2 client-credentials and password grants, tested against Keycloak in Docker.',
+    text: 'A reusable REST Assured base class for OAuth2 grants, tested against Keycloak in Docker.',
   },
 ];
 

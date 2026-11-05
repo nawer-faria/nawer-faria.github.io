@@ -1,21 +1,28 @@
-/* Release Ledger — design tokens.
+/* Night Ledger — design tokens (Release Ledger, dark-first edition).
+   Dark is the default. The light "paper" theme is chosen with the toggle and saved per visitor.
    Source of truth: the "Release Ledger" design system. Change values there first, then here. */
 
 :root {
-  /* Colour · light */
-  --paper: #f7f5f0;
-  --surface: #ffffff;
-  --surface-sunk: #efece5;
-  --ink: #16181d;
-  --ink-2: #3f434a;
-  --muted: #5b5f66;
-  --hairline: #d9d5cc;
-  --hairline-strong: #b9b4a8;
-  --accent: #1f7a5a;
-  --report-bar: #16181d;
-  --report-pass: #7fd1ae;
-  --tint-cool: #e6ecf2;
-  color-scheme: light;
+  /* Colour · dark (default) */
+  --paper: #0e1014;
+  --surface: #161920;
+  --surface-sunk: #1c2029;
+  --chip: #232833;
+  --ink: #edeae3;
+  --ink-2: #c9c5bd;
+  --muted: #9a9aa0;
+  --hairline: #23272f;
+  --hairline-strong: #2e333d;
+  --line-strong: #454952;
+  --accent: #5fbf95;
+  --on-accent: #0e1014;
+  --bank: #7fb3f5;
+  --report-bar: #edeae3;
+  --report-pass: #17654a;
+  --tint-cool: #1e2530;
+  --dot: rgba(237, 234, 227, 0.07);
+  --header-bg: rgba(14, 16, 20, 0.86);
+  color-scheme: dark;
 
   /* Type */
   --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
@@ -32,53 +39,40 @@
   --space-7: 48px;
   --space-8: 64px;
   --space-9: 96px;
-  --space-10: 120px;
+  --space-10: 128px;
 
   /* Radius */
   --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-pill: 999px;
 
   /* Layout */
-  --container-max: 1200px;
+  --container-max: 1120px;
   --gutter: clamp(20px, 4vw, 48px);
   --measure-body: 66ch;
   --tap-min: 44px;
 }
 
-/* Colour · dark (chosen with the toggle, saved per visitor) */
-:root[data-theme="dark"] {
-  --paper: #141519;
-  --surface: #1c1e23;
-  --surface-sunk: #22252b;
-  --ink: #edeae3;
-  --ink-2: #c9c5bd;
-  --muted: #9a9aa0;
-  --hairline: #2e3138;
-  --hairline-strong: #454952;
-  --accent: #5fbf95;
-  --report-bar: #edeae3;
-  --report-pass: #17654a;
-  --tint-cool: #1e2530;
-  color-scheme: dark;
-}
-
-/* Colour · dark (system setting, when JavaScript is off) */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --paper: #141519;
-    --surface: #1c1e23;
-    --surface-sunk: #22252b;
-    --ink: #edeae3;
-    --ink-2: #c9c5bd;
-    --muted: #9a9aa0;
-    --hairline: #2e3138;
-    --hairline-strong: #454952;
-    --accent: #5fbf95;
-    --report-bar: #edeae3;
-    --report-pass: #17654a;
-    --tint-cool: #1e2530;
-    color-scheme: dark;
-  }
+/* Colour · light ("paper") */
+:root[data-theme="light"] {
+  --paper: #f7f5f0;
+  --surface: #ffffff;
+  --surface-sunk: #efece5;
+  --chip: #ebe7de;
+  --ink: #16181d;
+  --ink-2: #3f434a;
+  --muted: #5b5f66;
+  --hairline: #e1ddd4;
+  --hairline-strong: #d9d5cc;
+  --line-strong: #b9b4a8;
+  --accent: #1b6f51;
+  --on-accent: #ffffff;
+  --bank: #2f5d8a;
+  --report-bar: #16181d;
+  --report-pass: #7fd1ae;
+  --tint-cool: #e6ecf2;
+  --dot: rgba(22, 24, 29, 0.06);
+  --header-bg: rgba(247, 245, 240, 0.88);
+  color-scheme: light;
 }
